@@ -8,16 +8,16 @@ interface UserPageProps {
     params: { id: string };
 }
 
-export default async function UserPage({ params }: UserPageProps) {
+export default async function UserCardModal({ params }: UserPageProps) {
     const user = await fetchUserById(params.id);
 
     return (
         <div className="flex items-center justify-center min-h-screen bg-gray-100 px-4">
 
-        <div className="relative p-6 space-y-4 bg-white min-h-screen">
+        <div className="relative px-6 pb-7 space-y-4 bg-white min-h-100 border rounded-xl">
             <Link
                 href="/"
-                className="absolute top-4 right-4 text-gray-500 hover:text-gray-800 transition"
+                className="absolute top-5 right-4 text-gray-500 hover:text-gray-800 transition"
                 aria-label="Закрыть"
                 >
                 <X className="w-6 h-6" />
