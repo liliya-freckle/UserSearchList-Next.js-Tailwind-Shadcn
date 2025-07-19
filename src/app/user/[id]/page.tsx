@@ -6,16 +6,18 @@ import Link from "next/link";
 import { X } from "lucide-react";
 
 
-interface UserPageProps {
-    params: { id: string };
-}
-
-export async function generateStaticParams(): Promise<{ id: string }[]> {
-    const users = await fetchUsers(); // gets the list of all users
+export async function generateStaticParams(): Promise<
+    { id: string }[]
+        > {
+    const users = await fetchUsers();
     return users.map((user) => ({ id: user.id.toString() }));
 }
 
-export default async function UserCardModal({ params }: UserPageProps) {
+export default async function UserCardModal({
+    params,
+        }: {
+    params: { id: string };
+        }) {
     const user = await fetchUserById(params.id);
 
     return (
