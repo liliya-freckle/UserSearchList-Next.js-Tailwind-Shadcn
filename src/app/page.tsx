@@ -4,6 +4,7 @@ import Footer from '@/components/layouts/Footer'
 import { fetchUsers } from "@/api/users";
 import { Card } from "@/components/ui/card";
 import Link from "next/link";
+import SearchUserList from "@/components/UserSearch";
 
 export default async function HomePage() {
   const users = await fetchUsers();
@@ -11,6 +12,10 @@ export default async function HomePage() {
   return (
     <div>
       <Header/>
+
+      <SearchUserList users={users}/>
+
+
       <div className="px-8 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
         {users.map((user) => (
           <Card key={user.id} className="p-4">
