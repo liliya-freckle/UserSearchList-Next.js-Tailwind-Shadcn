@@ -5,11 +5,12 @@ import { fetchUsers } from "@/api/users";
 import Link from "next/link";
 import { X } from "lucide-react";
 
+
 interface UserPageProps {
     params: { id: string };
 }
 
-export async function generateStaticParams() {
+export async function generateStaticParams(): Promise<{ id: string }[]> {
     const users = await fetchUsers(); // gets the list of all users
     return users.map((user) => ({ id: user.id.toString() }));
 }
