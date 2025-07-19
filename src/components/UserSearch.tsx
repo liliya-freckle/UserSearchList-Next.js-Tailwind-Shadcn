@@ -31,18 +31,34 @@ export default function SearchUserList({ users }: SearchUserListProps) {
 
   return (
     <>
-    <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ duration: 0.4 }}
-        className="grid gap-6 md:grid-cols-2 lg:grid-cols-3"
-      >
-        <Input
+      <Input
           placeholder="Введите имя пользователя для поиска..."
           value={inputSearch}
           onChange={handleSearchInputChange}
-          className="mb-6 mx-7 max-w-md px-6"
+          className="mb-6 mx-7 max-w-md px-7"
         />
+
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 0.4 }}
+        className="grid gap-6 md:grid-cols-2 lg:grid-cols-3 px-7"
+      >
+
+        {filteredUsers.map((user) => (
+        <Link
+          key={user.id}
+          href={`/user/${user.id}`}
+          className="group block hover:shadow-lg transition-shadow rounded-lg overflow-hidden"
+        >
+        <Card className="h-full flex flex-col p-4">
+          <h2 className="text-lg font-bold">{user.name}</h2>
+          <p className="text-sm text-gray-600">{user.email}</p>
+          <p className="text-sm text-gray-600">{user.company.name}</p>
+          <p className="text-blue-500 underline mt-2 block">Подробнее</p>
+        </Card>
+        </Link>
+        ))}
 
         {inputSearch.trim().length >= 2 && filteredUsers.length === 0 && (
           <p className="col-span-full text-center text-muted-foreground mb-3">
