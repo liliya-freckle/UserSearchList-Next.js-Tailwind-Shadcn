@@ -14,21 +14,6 @@ Dynamic user search UI: Displays and filters user data (assumed functionality in
 Next.js 13 (App Router, Server Components)
 React 18
 TypeScript
-CSS Modules or your preferred styling approach
-
-#Project Structure
-
-src/
-├── app/
-│ ├── page.tsx # Main page rendering Header, SearchUserList, Footer
-│ └── [id]/ # Dynamic user detail pages (if applicable)
-├── components/
-│ ├── layouts/
-│ │ ├── Header.tsx
-│ │ └── Footer.tsx
-│ └── UserSearch.tsx # User search list UI component
-├── api/
-│ └── users.ts # API call: fetchUsers function
-├── styles/ # CSS / styling files
-├── lib/ # Utility functions
-└── types/ # TypeScript interfaces/types
+CSS Modules
+Tailwind
+Shadcn
